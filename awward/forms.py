@@ -13,3 +13,7 @@ class UserForm(ModelForm):
         model = User
         fields = ['name', 'username', 'email', 'profile_pic']
 
+class NewProjectForm(forms.ModelForm):
+    class Meta:
+        model = Project
+        exclude = ['us', 'date_added']
