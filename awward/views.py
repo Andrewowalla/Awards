@@ -14,6 +14,7 @@ def logoutUser(request):
     logout(request)
     return redirect('login')
 
+@login_required(login_url='login')
 def home(request):
     return render(request, 'home.html')
 
@@ -35,6 +36,30 @@ def register_user(request):
         'form':form
     }
     return render(request, 'registration/register_user.html', context)
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST.get('username').lower()
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username = username)
+        except:
+            messages.error(request, 'User does not exist')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return render('home')
+        else:
+            messages.error(request, 'username or password does not exist')
+
+
+    context = {
+
+    }
+    return render(request, 'registration/login.html', context)
 
 
 def view_profile(request , pk):
