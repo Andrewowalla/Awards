@@ -17,3 +17,6 @@ class Project(models.Model):
     repo_link = models.CharField(max_length=500)
     live_link = models.CharField(max_length=500, blank=True)
     image = CloudinaryField('images', null=True)
+
+    def __str__(self):
+        return self.name
