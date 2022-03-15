@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Nunito+Sans:wght@200;300;400;600&family=Nunito:ital,wght@0,400;0,700;1,200&family=Poppins:wght@100;300;500&display=swap');
+
+
+:root {
+    --dark-blue: #2B2D42;
+    --lighter-blue: #8D99AE;
+    --neutral: #EDF2F4;
+    --ligter-red: #EF233C;
+    --dark-red: #D90429;
+}
+
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    max-width: 100vw;
+}
+
+
+.navbar {
+    height: 8vh;
+    padding: 0 3rem;
+    background-color: white;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--dark-blue)
+}
+
+
+#navbarNav {
+    z-index: 1000;
+    display: flex;
+    justify-content: right;
+}
+
+
+#navbarNav > ul {
+    z-index: 1000;
+}
+
+
+#navbarNav > ul > li > a {
+    color: black;
+}
+
+
+span {
+    color: var(--ligter-red);
+}
+
+
+body > nav > div > div.navbar-right > a {
+    text-decoration: none;
+    color: black;
+    margin-right: 1rem;
+    font-weight: 500;
+}
+
+
+.intro {
+    max-width: 100vw;
+}
+
+.overlay {
+    min-height: 80vh;
+    max-width: 100vw;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.884), rgba(253, 253, 253, 0.301)),
+    url(https://images.unsplash.com/19/lighthouse.JPG?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max);
+    background-position: center;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}

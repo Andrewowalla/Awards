@@ -61,7 +61,7 @@ def login_user(request):
     }
     return render(request, 'registration/login.html', context)
 
-
+@login_required(login_url='login')
 def view_profile(request , pk):
     user = User.objects.get(id=pk)
     posts = Project.objects.all()
