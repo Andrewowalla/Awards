@@ -29,3 +29,5 @@ class Rate(models.Model):
     content_vote = models.IntegerField(default=0, validators=[MaxValueValidator(10), MinValueValidator(0)])
     comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True, null=True)
+
+    
