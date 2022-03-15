@@ -17,3 +17,8 @@ class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         exclude = ['us', 'date_added']
+
+class RateProjectForm(forms.ModelForm):
+    class Meta:
+        model = Rate
+        exclude = ['us', 'project']
