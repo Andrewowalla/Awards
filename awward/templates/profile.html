@@ -1,0 +1,29 @@
+{% extends 'base.html' %}  
+
+
+{% block content %} 
+
+<div class="container">  
+    <div class="row">
+        <div class="col-md-5">
+            
+            <div class="user-profile my-2">
+                <img src="{{ user.profile_pic.url }}" alt="">
+            </div>
+            <h3> {{ user}}</h3>
+            <a href="{% url 'update_profile' %}">update profile</a>
+        </div>
+        <div class="col-md-7">
+            posts
+            {% for post in posts %}
+                <div class="profile-post">
+                    <p>{{post.name}}</p>
+                    <small>{{ post.date_added | timesince }}</small>  
+                </div>          
+            {% endfor %}
+        </div>
+    </div>
+        
+</div>
+
+{% endblock %}
