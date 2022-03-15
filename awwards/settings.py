@@ -36,16 +36,20 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'awward',
+    'bootstrap5',
+    'cloudinary',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'awward',
-    # 'bootstrap5',
-    'cloudinary',
+    
 ]
+
+AUTH_USER_MODEL = 'awward.User'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -85,9 +89,9 @@ WSGI_APPLICATION = 'awwards.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME':config('DB_NAME'),
-        'USER':config('DB_USER'), 
-        'PASSWORD':config('DB_PASSWORD'),
+        'NAME': 'awwards',
+        'USER': 'andrewowalla',
+        'PASSWORD':'db_password',
     }
 }
 

@@ -5,13 +5,14 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Create your models here.
-class Profile(models.Model):
+class User(AbstractUser):
     name = models.CharField(max_length=200, null=True)
     email = models.EmailField(null=True, unique=True)
     bio = models.TextField(null=True)
     profile_pic = CloudinaryField('images')
 
 class Project(models.Model):
+    us = models.ForeignKey(User, on_delete=models.CASCADE, )
     name = models.CharField(max_length=100)
     date_added = models.DateTimeField(auto_now_add=True)
     description = models.CharField(max_length=250)
@@ -23,6 +24,7 @@ class Project(models.Model):
         return self.name
 
 class Rate(models.Model):
+    us = models.ForeignKey(User, on_delete=models.CASCADE)
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     design_vote = models.IntegerField(default=0, validators=[MaxValueValidator(10), MinValueValidator(0)])
     usability_vote = models.IntegerField(default=0, validators=[MaxValueValidator(10), MinValueValidator(0)])
@@ -30,4 +32,3 @@ class Rate(models.Model):
     comment = models.TextField()
     created = models.DateTimeField(auto_now_add=True, null=True)
 
-    
