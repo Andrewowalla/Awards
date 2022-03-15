@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from .models import  Project, Rate, User
+from .forms import NewProjectForm, RateProjectForm, MyUserCreationForm, UserForm
 from django.contrib  import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse
@@ -9,8 +10,32 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+def logoutUser(request):
+    logout(request)
+    return redirect('login')
+
 def home(request):
     return render(request, 'home.html')
+
+def register_user(request):
+    form = MyUserCreationForm()
+    
+    if request.method == 'POST':
+        form = MyUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.save()
+            login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'an error occurred during registration')
+
+    context = {
+        'form':form
+    }
+    return render(request, 'registration/register_user.html', context)
+
 
 def view_profile(request , pk):
     user = User.objects.get(id=pk)
