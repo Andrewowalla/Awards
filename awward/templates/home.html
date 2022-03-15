@@ -1,0 +1,45 @@
+{% extends 'base.html' %}  
+
+{% block content %} 
+
+<section class="intro">
+    <div class="overlay">
+        <div class="overlay-text">
+            <h3>how well do you <span>stack</span> against your peers?</h3>
+        </div>
+        <div class="button-tray">
+            <a href="{% url 'projects' %}">rate projects</a>
+            <a href="{% url 'new_project' %}">post project</a>
+        </div>
+    </div>
+</section>
+<div class="intro-text">
+    <h4><span>karibu</span>, be part of the online judges. Rate a project on how it stacks by <span>design</span>, 
+    <span>content</span> and <span>usability</span></h4>    
+</div>
+
+<div class="container card-holder">
+    <div class="row card-deck">
+        <div class="card col-md-3">
+            <div class="card-body">
+              <h5 class="card-title text-center">design</h5>
+              <p class="card-text text-center">rate by design, which one stand out, according to you?</p>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <div class="card-body">
+              <h5 class="card-title text-center">content</h5>
+              <p class="card-text text-center">content- did you get information(valuable) by visiting the site?</p>
+            </div>
+        </div>
+
+        <div class="card col-md-3">
+            <div class="card-body">
+              <h5 class="card-title text-center">usability</h5>
+              <p class="card-text text-center">how easy was it using the site? any complications</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
