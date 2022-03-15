@@ -12,6 +12,10 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+from decouple import config,Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$la*_vube@a0gap6%rrqq=))m!-%yd!&ox1a_ow&&94((l@u5*'
+SECRET_KEY =config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'awward',
-    'bootstrap5'
+    'bootstrap5',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -79,9 +84,9 @@ WSGI_APPLICATION = 'awwards.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'awwards',
-        'USER': 'andrewowalla',
-        'PASSWORD':'db_password',
+        'NAME':config('DB_NAME'),
+        'USER':config('DB_USER'), 
+        'PASSWORD':config('DB_PASSWORD'),
     }
 }
 
@@ -125,6 +130,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
+# adding config
+cloudinary.config( 
+  cloud_name = "do7r1eyot", 
+  api_key = "144923558388227", 
+  api_secret = "AFH8bfLeUoHm5GieD-I1O_Z-Hes" 
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
