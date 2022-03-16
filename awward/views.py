@@ -11,7 +11,6 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def logoutUser(request):
-    logout(request)
     return redirect('login')
 
 @login_required(login_url='login')
@@ -95,7 +94,7 @@ def new_project(request):
         form = NewProjectForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
-            project.owner = current_user
+            project.us = current_user
             project.save()
         return redirect('home')
     else:
@@ -122,7 +121,7 @@ def rate_project(request, id):
         form = RateProjectForm(request.POST)
         if form.is_valid():
             rating = form.save(commit=False)
-            rating.owner = current_user
+            rating.us = current_user
             rating.project = project
             rating.save()
             return redirect('home')
